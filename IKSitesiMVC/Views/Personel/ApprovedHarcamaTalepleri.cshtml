@@ -1,0 +1,35 @@
+﻿@using IKSitesiMVC.ViewModels.HarcamaTalebi
+@model IEnumerable<OnayliHarcamaTalebi_VM>
+
+@{
+    ViewData["Title"] = "Onaylanmış Harcama Taleplerim";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (Model == null || !Model.Any())
+{
+    <p>Onaylanmış harcama talebi bulunamadı.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Personel Adı</th>
+                <th>Harcama Tutarı</th>
+                <th>Durum</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var talep in Model)
+            {
+                <tr>
+                    <td>@talep.PersonelAdi</td>
+                    <td>@talep.HarcamaTutari.ToString("C")</td>
+                    <td>@(talep.Onaylimi ? "Onaylanmış" : "Beklemede")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

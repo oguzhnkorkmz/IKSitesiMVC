@@ -1,0 +1,120 @@
+﻿@{
+    ViewData["Title"] = "Personel Anasayfa";
+}
+
+<div class="container mt-5">
+    <!-- Hero Bölümü -->
+    <div class="bg-light rounded-3 shadow-sm p-5 text-center mb-5">
+        <h2 class="display-5 fw-bold">👨‍💼 Personel Anasayfasına Hoşgeldiniz!</h2>
+        <p class="lead text-muted">İlgili işlemi seçerek hızlı erişim sağlayabilirsiniz.</p>
+    </div>
+
+    <!-- ModelState Hataları -->
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger rounded-2">
+            <ul class="mb-0">
+                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    <li>@error.ErrorMessage</li>
+                }
+            </ul>
+        </div>
+    }
+
+    <!-- Talep Tipleri Kartları -->
+    <div class="row g-4 justify-content-center">
+        <!-- İzin Talebi -->
+        <div class="col-12 col-md-6 col-lg-4">
+            <a href="@Url.Action("IzinTalebi", "Personel")" class="text-decoration-none">
+                <div class="card h-100 shadow-sm hover-scale">
+                    <div class="card-body text-center">
+                        <i class="fas fa-calendar-alt fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">İzin Talebi</h5>
+                        <p class="card-text text-muted">Yeni izin talebi oluşturun</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Avans Talebi -->
+        <div class="col-12 col-md-6 col-lg-4">
+            <a href="@Url.Action("AvansTalebi", "Personel")" class="text-decoration-none">
+                <div class="card h-100 shadow-sm hover-scale">
+                    <div class="card-body text-center">
+                        <i class="fas fa-hand-holding-usd fa-3x text-success mb-3"></i>
+                        <h5 class="card-title">Avans Talebi</h5>
+                        <p class="card-text text-muted">Avans talebi oluşturun</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Harcama Talebi -->
+        <div class="col-12 col-md-6 col-lg-4">
+            <a href="@Url.Action("HarcamaTalebi", "Personel")" class="text-decoration-none">
+                <div class="card h-100 shadow-sm hover-scale">
+                    <div class="card-body text-center">
+                        <i class="fas fa-receipt fa-3x text-warning mb-3"></i>
+                        <h5 class="card-title">Harcama Talebi</h5>
+                        <p class="card-text text-muted">Harcama talebi oluşturun</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <hr class="my-5">
+
+    <!-- Onaylı Talepler Kartları -->
+    <div class="row g-4 justify-content-center">
+        <!-- Onaylı İzin Talepleri -->
+        <div class="col-12 col-md-6 col-lg-4">
+            <a href="@Url.Action("ApprovedIzinTalepleri", "Personel")" class="text-decoration-none">
+                <div class="card h-100 shadow-sm hover-scale">
+                    <div class="card-body text-center">
+                        <i class="fas fa-check-circle fa-3x text-info mb-3"></i>
+                        <h5 class="card-title">Onaylı İzin Talepleri</h5>
+                        <p class="card-text text-muted">Tüm onaylanmış izin talepleriniz</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Onaylı Harcama Talepleri -->
+        <div class="col-12 col-md-6 col-lg-4">
+            <a href="@Url.Action("ApprovedHarcamaTalepleri", "Personel")" class="text-decoration-none">
+                <div class="card h-100 shadow-sm hover-scale">
+                    <div class="card-body text-center">
+                        <i class="fas fa-file-invoice-dollar fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">Onaylı Harcama Talepleri</h5>
+                        <p class="card-text text-muted">Tüm onaylanmış harcama talepleriniz</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Onaylı Avans Talepleri -->
+        <div class="col-12 col-md-6 col-lg-4">
+            <a href="@Url.Action("ApprovedAvansTalepleri", "Personel")" class="text-decoration-none">
+                <div class="card h-100 shadow-sm hover-scale">
+                    <div class="card-body text-center">
+                        <i class="fas fa-money-bill-wave fa-3x text-success mb-3"></i>
+                        <h5 class="card-title">Onaylı Avans Talepleri</h5>
+                        <p class="card-text text-muted">Tüm onaylanmış avans talepleriniz</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .hover-scale {
+        transition: transform 0.2s ease-in-out;
+    }
+
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+</style>

@@ -1,0 +1,69 @@
+﻿@{
+    ViewData["Title"] = "SiteAdmin Dashboard";
+}
+
+<div class="container mt-5">
+    <!-- Hero Bölümü -->
+    <div class="bg-light rounded-3 shadow-sm p-5 text-center mb-5">
+        <h2 class="display-5 fw-bold">🛠 SiteAdmin Paneli</h2>
+        <p class="lead text-muted">Yönetim işlemleri için aşağıdaki seçeneklerden birini seçebilirsiniz.</p>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+        <!-- Kurum İşlemleri -->
+        <div class="col-12 col-md-6 col-lg-4">
+            <a asp-area="SiteAdmin" asp-controller="Kurum" asp-action="Index" class="text-decoration-none">
+                <div class="card h-100 shadow-sm hover-scale border-primary">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h5 class="mb-0">🏢 Kurum İşlemleri</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <p class="card-text text-muted">Kurum bilgilerini görüntüleyin ve yönetin.</p>
+                        <i class="fas fa-building fa-2x text-primary"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Paket İşlemleri -->
+        <div class="col-12 col-md-6 col-lg-4">
+            <a asp-area="SiteAdmin" asp-controller="Paket" asp-action="Index" class="text-decoration-none">
+                <div class="card h-100 shadow-sm hover-scale border-success">
+                    <div class="card-header bg-success text-white text-center">
+                        <h5 class="mb-0">📦 Paket İşlemleri</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <p class="card-text text-muted">Paketleri listeleyin, ekleyin, güncelleyin veya silin.</p>
+                        <i class="fas fa-box fa-2x text-success"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Bölüm İşlemleri -->
+        <div class="col-12 col-md-6 col-lg-4">
+            <a asp-area="SiteAdmin" asp-controller="Bolum" asp-action="Index" class="text-decoration-none">
+                <div class="card h-100 shadow-sm hover-scale border-warning">
+                    <div class="card-header bg-warning text-white text-center">
+                        <h5 class="mb-0">📂 Bölüm İşlemleri</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <p class="card-text text-muted">Bölüm bilgilerini görüntüleyin ve yönetin.</p>
+                        <i class="fas fa-columns fa-2x text-warning"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Hover efekti stili -->
+<style>
+    .hover-scale {
+        transition: transform 0.2s ease-in-out;
+    }
+
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+</style>

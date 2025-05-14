@@ -1,0 +1,20 @@
+﻿@using IKSitesiMVC.Areas.SiteAdmin.DTO_s.Bolum
+@model Bolum_DTO
+
+<h2>Bölüm Güncelle</h2>
+
+
+
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="BolumID" />
+
+    <div class="form-group">
+        <label asp-for="BolumAdi"></label>
+        <input asp-for="BolumAdi" class="form-control" />
+        <span asp-validation-for="BolumAdi" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-warning">Güncelle</button>
+    <a asp-action="Index" class="btn btn-secondary">Geri</a>
+</form>

@@ -1,0 +1,48 @@
+﻿@using IKSitesiMVC.Areas.SiteAdmin.DTO_s
+@model IEnumerable<KurumList_DTO>
+
+@{
+    ViewData["Title"] = "Kurum Listesi";
+}
+
+<h2>Kurum Listesi</h2>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        Kayıtlı kurum bulunamadı.
+    </div>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Kurum ID</th>
+                <th>Kurum Adı</th>
+                <th>Paket Başlangıç Tarihi</th>
+                <th>Paket Bitiş Tarihi</th>
+                <th>Paket Aktif Mi?</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var kurum in Model)
+            {
+                <tr>
+                    <td>@kurum.KurumID</td>
+                    <td>@kurum.KurumAdi</td>
+                    <td>@kurum.PaketBaslangicTarihi.ToShortDateString()</td>
+                    <td>@kurum.PaketBitisTarihi.ToShortDateString()</td>
+                    <td>@(kurum.PaketAktifMi ? "Evet" : "Hayır")</td>
+                    <td>
+                        <!-- Her satırda ilgili kurumun detayına gidecek buton -->
+                        <a asp-action="KurumDetay" asp-route-id="@kurum.KurumID" class="btn btn-info">
+                            Detay
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

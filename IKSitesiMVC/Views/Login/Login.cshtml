@@ -1,0 +1,75 @@
+﻿@model IKSitesiMVC.ViewModels.Login.Login_VM
+
+@{
+    ViewData["Title"] = "Giriş Yap";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="form-container mt-5" style="max-width: 500px;">
+    <form asp-action="Login" method="post">
+        <h2 class="text-center mb-4" id="girisBaslik">Personel Girişi</h2>
+
+       
+
+        <!-- Hata mesajlarını göstermek için ModelState -->
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                    {
+                        <li>@error.ErrorMessage</li>
+                    }
+                </ul>
+            </div>
+        }
+
+        <div class="btn-group mb-4 w-100" role="group" aria-label="Giriş Türü">
+            <input asp-for="GirisTipi"
+                   class="btn-check"
+                   type="radio"
+                   id="radioPersonel"
+                   value="Personel" />
+            <label class="btn btn-outline-primary w-50" for="radioPersonel">Personel Girişi</label>
+
+            <input asp-for="GirisTipi"
+                   class="btn-check"
+                   type="radio"
+                   id="radioKurum"
+                   value="Kurum" />
+            <label class="btn btn-outline-primary w-50" for="radioKurum">Kurum Girişi</label>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label">E-Posta</label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="mb-4">
+            <label asp-for="Sifre" class="form-label">Şifre</label>
+            <input asp-for="Sifre" type="password" class="form-control" />
+            <span asp-validation-for="Sifre" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Giriş Yap</button>
+    </form>
+
+    <div class="text-center mt-3">
+        <a asp-controller="Password" asp-action="ForgotPassword" class="btn btn-link">Şifremi Unuttum?</a>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        // Başlığı radio seçimine göre güncellemek için:
+        document.querySelectorAll('input[name="GirisTipi"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                document.getElementById('girisBaslik').innerText = radio.value + ' Girişi';
+            });
+        });
+    </script>
+}
+

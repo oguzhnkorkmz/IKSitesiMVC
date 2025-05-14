@@ -1,0 +1,84 @@
+﻿@{
+    ViewData["Title"] = "Şirket Admin Paneli";
+    var kurumId = User.FindFirst("KurumID")?.Value;
+}
+
+<div class="container mt-5">
+    <!-- Hero Bölümü -->
+    <div class="bg-light rounded-3 shadow-sm p-5 text-center mb-5">
+        <h2 class="display-5 fw-bold">🏢 Şirket Admin Paneli</h2>
+        <p class="lead text-muted">Hoş geldiniz, Şirket Yöneticisi!</p>
+    </div>
+
+    <!-- Personel İşlemleri Kartı -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-12 col-md-6 col-lg-4">
+            <a asp-area="SirketAdmin" asp-controller="Personel" asp-action="Create" class="text-decoration-none">
+                <div class="card h-100 shadow-sm hover-scale border-primary">
+                    <div class="card-body text-center">
+                        <i class="fas fa-user-plus fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">Personel Ekle</h5>
+                        <p class="card-text text-muted">Yeni personel oluşturun</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    @if (!string.IsNullOrEmpty(kurumId))
+    {
+        <!-- Bekleyen Talepler Kartları -->
+        <div class="row g-4 justify-content-center">
+            <div class="col-12 col-md-6 col-lg-4">
+                <a asp-area="SirketAdmin" asp-controller="Izin" asp-action="IzinTalepler" asp-route-kurumId="@kurumId" class="text-decoration-none">
+                    <div class="card h-100 shadow-sm hover-scale border-warning">
+                        <div class="card-body text-center">
+                            <i class="fas fa-calendar-alt fa-3x text-warning mb-3"></i>
+                            <h5 class="card-title">Bekleyen İzin Talepleri</h5>
+                            <p class="card-text text-muted">Onay bekleyen izinler</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <a asp-area="SirketAdmin" asp-controller="Harcama" asp-action="HarcamaTalepler" asp-route-kurumId="@kurumId" class="text-decoration-none">
+                    <div class="card h-100 shadow-sm hover-scale border-info">
+                        <div class="card-body text-center">
+                            <i class="fas fa-file-invoice-dollar fa-3x text-info mb-3"></i>
+                            <h5 class="card-title">Bekleyen Harcama Talepleri</h5>
+                            <p class="card-text text-muted">Onay bekleyen harcamalar</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <a asp-area="SirketAdmin" asp-controller="Avans" asp-action="AvansTalepler" asp-route-kurumId="@kurumId" class="text-decoration-none">
+                    <div class="card h-100 shadow-sm hover-scale border-success">
+                        <div class="card-body text-center">
+                            <i class="fas fa-money-bill-wave fa-3x text-success mb-3"></i>
+                            <h5 class="card-title">Bekleyen Avans Talepleri</h5>
+                            <p class="card-text text-muted">Onay bekleyen avanslar</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-danger text-center mt-4">
+            <i class="fas fa-exclamation-triangle"></i>
+            <strong> Hata:</strong> Kurum ID bilgisi alınamadı.
+        </div>
+    }
+</div>
+
+<style>
+    .hover-scale {
+        transition: transform 0.2s ease-in-out;
+    }
+
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+</style>

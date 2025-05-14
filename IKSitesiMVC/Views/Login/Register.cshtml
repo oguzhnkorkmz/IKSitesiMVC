@@ -1,0 +1,91 @@
+﻿@model IKSitesiMVC.ViewModels.Login.Register_VM
+
+@{
+    ViewData["Title"] = "Kayıt Ol";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="form-container">
+    <h2 class="form-title">Kayıt Ol</h2>
+
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger">
+            <ul>
+                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    <li>@error.ErrorMessage</li>
+                }
+            </ul>
+        </div>
+    }
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    <form asp-action="Register" method="post">
+        <div class="form-group">
+            <label asp-for="KurumAdi"></label>
+            <input asp-for="KurumAdi" class="form-control" />
+            <span asp-validation-for="KurumAdi" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="UserName"></label>
+            <input asp-for="UserName" class="form-control" />
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Adres"></label>
+            <input asp-for="Adres" class="form-control" />
+            <span asp-validation-for="Adres" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="VergiNumarasi"></label>
+            <input asp-for="VergiNumarasi" class="form-control" />
+            <span asp-validation-for="VergiNumarasi" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Sifre"></label>
+            <input asp-for="Sifre" class="form-control" type="password" />
+            <span asp-validation-for="Sifre" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="SifreOnayi"></label>
+            <input asp-for="SifreOnayi" class="form-control" type="password" />
+            <span asp-validation-for="SifreOnayi" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="PaketID">Paket Seçin</label>
+            <select asp-for="PaketID" asp-items="Model.Paketler" class="form-control">
+                <option value="">-- Paket Seçin --</option>
+            </select>
+            <span asp-validation-for="PaketID" class="text-danger"></span>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary w-100">Kayıt Ol</button>
+    </form>
+
+    <div class="text-center mt-3">
+        <a asp-action="Login" class="text-decoration-none">Zaten hesabınız var mı? Giriş yapın</a>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

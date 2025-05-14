@@ -1,0 +1,36 @@
+﻿@model IEnumerable<IKSitesiMVC.ViewModels.IzinTalebi.OnayliIzinTalebi_VM>
+
+@{
+    ViewData["Title"] = "Onaylanmış İzin Taleplerim";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (Model == null || !Model.Any())
+{
+    <p>Onaylanmış izin talebi bulunamadı.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Personel Adı</th>
+                <th>Başlangıç Tarihi</th>
+                <th>Bitiş Tarihi</th>
+                <th>Durum</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var talep in Model)
+            {
+                <tr>
+                    <td>@talep.PersonelAdi</td>
+                    <td>@talep.BaslangicTarihi.ToShortDateString()</td>
+                    <td>@talep.BitisTarihi.ToShortDateString()</td>
+                    <td>@(talep.Onaylimi ? "Onaylanmış" : "Beklemede")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

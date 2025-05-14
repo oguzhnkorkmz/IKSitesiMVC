@@ -1,0 +1,44 @@
+﻿@using IKSitesiMVC.Areas.SirketAdmin.ViewModels.Talep
+@model IEnumerable<AvansTalebiList_VM>
+
+@{
+    ViewData["Title"] = "Bekleyen Avans Talepleri";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <!-- ID sütunu isteğe bağlı, isteğe bağlı olarak kaldırabilirsiniz -->
+            <th></th>
+            <th>Personel</th>
+            <th>Talep Edilen Tutar</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var talep in Model)
+        {
+            <tr>
+                <td>@talep.AvansTalebiID</td>
+                <td>@talep.PersonelAdi</td>
+                <td>@talep.TalepEdilenTutar.ToString("C")</td>
+                <td>
+                    <form asp-action="Onayla" method="post" style="display:inline;">
+                        <input type="hidden" name="avansTalebiID" value="@talep.AvansTalebiID" />
+                        <input type="hidden" name="kurumId" value="@talep.KurumID" />
+                        <button type="submit" class="btn btn-success">Onayla</button>
+                    </form>
+                    <form asp-action="Reddet" method="post" style="display:inline; margin-left:10px;">
+                        <input type="hidden" name="avansTalebiID" value="@talep.AvansTalebiID" />
+                        <input type="hidden" name="kurumId" value="@talep.KurumID" />
+                        <button type="submit" class="btn btn-danger">Reddet</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

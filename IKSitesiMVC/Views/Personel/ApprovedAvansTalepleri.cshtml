@@ -1,0 +1,35 @@
+﻿@using IKSitesiMVC.ViewModels.AvansTalebi
+@model IEnumerable<OnayliAvansTalebi_VM>
+
+@{
+    ViewData["Title"] = "Onaylanmış Avans Taleplerim";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (Model == null || !Model.Any())
+{
+    <p>Onaylanmış avans talebi bulunamadı.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Personel Adı</th>
+                <th>Talep Edilen Tutar</th>
+                <th>Durum</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var talep in Model)
+            {
+                <tr>
+                    <td>@talep.PersonelAdi</td>
+                    <td>@talep.TalepEdilenTutar.ToString("C")</td>
+                    <td>@(talep.Onaylimi ? "Onaylanmış" : "Beklemede")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

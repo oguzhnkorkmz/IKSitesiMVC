@@ -1,0 +1,44 @@
+﻿@using IKSitesiMVC.Areas.SiteAdmin.DTO_s.Paket
+@model PaketDetail_DTO
+
+@{
+    ViewData["Title"] = "Paket Detayları";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Paket Detayları</h2>
+
+    <div class="card">
+        <div class="card-header bg-info text-white">
+            <h5>@Model.PaketAdi (#@Model.PaketID)</h5>
+        </div>
+        <div class="card-body">
+            <p><strong>Fiyat:</strong> @Model.Fiyat</p>
+            <p><strong>Paket Süresi:</strong> @Model.PaketSuresi Gün</p>
+            <p><strong>Aktif Mi?:</strong> @(Model.AktifMi ? "Evet" : "Hayır")</p>
+            <p><strong>Kapasite Sayısı:</strong> @Model.KapasiteSayisi</p>
+            <p>
+                <strong>Eklenme Tarihi:</strong>
+                @Model.EklenmeTarihi.ToString("dd/MM/yyyy")
+            </p>
+            @if (Model.GuncellemeTarihi != null)
+            {
+                <p>
+                    <strong>Güncelleme Tarihi:</strong>
+                    @Model.GuncellemeTarihi?.ToString("dd/MM/yyyy")
+                </p>
+            }
+            @if (Model.SilmeTarihi != null)
+            {
+                <p>
+                    <strong>Silme Tarihi:</strong>
+                    @Model.SilmeTarihi?.ToString("dd/MM/yyyy")
+                </p>
+            }
+            <p><strong>Kayıt Durumu:</strong> @Model.KayitDurumu</p>
+        </div>
+        <div class="card-footer">
+            <a asp-action="Index" class="btn btn-primary">Listeye Dön</a>
+        </div>
+    </div>
+</div>

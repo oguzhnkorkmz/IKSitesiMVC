@@ -1,0 +1,60 @@
+﻿@model IKSitesiMVC.Areas.SirketAdmin.ViewModels.Personel.PersonelEkle_VM
+
+@{
+    ViewData["Title"] = "Personel Ekle";
+}
+
+<h2>Yeni Personel Ekle</h2>
+
+@* Validation summary *@
+@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+
+
+<form asp-action="Create" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="mb-3">
+        <label asp-for="PersonelAdi" class="form-label"></label>
+        <input asp-for="PersonelAdi" class="form-control" />
+        <span asp-validation-for="PersonelAdi" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="PersonelSoyadi" class="form-label"></label>
+        <input asp-for="PersonelSoyadi" class="form-control" />
+        <span asp-validation-for="PersonelSoyadi" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Sifre" class="form-label"></label>
+        <input asp-for="Sifre" type="password" class="form-control" />
+        <span asp-validation-for="Sifre" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ConfirmPassword" class="form-label"></label>
+        <input asp-for="ConfirmPassword" type="password" class="form-control" />
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="BolumID" class="form-label"></label>
+        <select asp-for="BolumID" class="form-select" asp-items="Model.Bolumler"></select>
+        <span asp-validation-for="BolumID" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

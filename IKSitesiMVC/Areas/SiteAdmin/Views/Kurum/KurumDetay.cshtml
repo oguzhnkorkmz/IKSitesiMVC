@@ -1,0 +1,35 @@
+﻿@using IKSitesiMVC.Areas.SiteAdmin.DTO_s
+@model KurumDetay_DTO
+
+@{
+    ViewData["Title"] = "Kurum Detayları";
+}
+
+<div class="container my-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h2 class="mb-0">Kurum Detayları</h2>
+        </div>
+        <div class="card-body">
+            <h3 class="card-title">
+                @Model.KurumAdi <small class="text-muted">(@Model.KurumID)</small>
+            </h3>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Adres:</strong> @Model.Adres</li>
+                <li class="list-group-item"><strong>Paket ID:</strong> @Model.PaketID</li>
+                <li class="list-group-item"><strong>Paket Bilgi:</strong> @Model.PaketBilgi</li>
+                <li class="list-group-item"><strong>Paket Başlangıç Tarihi:</strong> @Model.PaketBaslangicTarihi.ToLongDateString()</li>
+                <li class="list-group-item"><strong>Paket Bitiş Tarihi:</strong> @Model.PaketBitisTarihi.ToLongDateString()</li>
+                <li class="list-group-item"><strong>Paket Aktif Mi?:</strong> @(Model.PaketAktifMi ? "Evet" : "Hayır")</li>
+                <li class="list-group-item"><strong>Vergi Numarası:</strong> @Model.VergiNumarasi</li>
+                <li class="list-group-item"><strong>Eklenme Tarihi:</strong> @Model.EklenmeTarihi.ToLongDateString()</li>
+                <li class="list-group-item"><strong>Güncelleme Tarihi:</strong> @(Model.GuncellemeTarihi.HasValue ? Model.GuncellemeTarihi.Value.ToLongDateString() : "Yok")</li>
+                <li class="list-group-item"><strong>Silme Tarihi:</strong> @(Model.SilmeTarihi.HasValue ? Model.SilmeTarihi.Value.ToLongDateString() : "Yok")</li>
+                <li class="list-group-item"><strong>Kayıt Durumu:</strong> @Model.KayitDurumu</li>
+            </ul>
+        </div>
+        <div class="card-footer text-right">
+            <a asp-action="Index" class="btn btn-outline-primary">Kurum Listesine Dön</a>
+        </div>
+    </div>
+</div>

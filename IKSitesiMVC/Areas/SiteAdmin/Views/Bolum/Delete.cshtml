@@ -1,0 +1,26 @@
+﻿@using IKSitesiMVC.Areas.SiteAdmin.DTO_s.Bolum
+@model Bolum_DTO
+
+<h2>Bölümü Sil</h2>
+
+
+<div class="alert alert-warning">
+    <p><strong>Dikkat:</strong> Bu bölümü silmek istediğinize emin misiniz?</p>
+</div>
+
+<table class="table">
+    <tr>
+        <th>ID:</th>
+        <td>@Model.BolumID</td>
+    </tr>
+    <tr>
+        <th>Adı:</th>
+        <td>@Model.BolumAdi</td>
+    </tr>
+</table>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="BolumID" />
+    <button type="submit" class="btn btn-danger">Evet, Sil</button>
+    <a asp-action="Index" class="btn btn-secondary">Geri</a>
+</form>

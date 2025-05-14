@@ -1,0 +1,52 @@
+﻿@using IKSitesiMVC.Areas.SiteAdmin.DTO_s.Paket
+@model PaketCreate_DTO
+
+@{
+    ViewData["Title"] = "Yeni Paket Ekle";
+}
+
+
+<div class="container mt-4">
+    <h2 class="mb-4">Yeni Paket Ekle</h2>
+
+    <form asp-action="Create" method="post" class="form-horizontal">
+        <div class="form-group">
+            <label asp-for="PaketAdi" class="control-label"></label>
+            <input type="text" asp-for="PaketAdi" class="form-control" />
+            <span asp-validation-for="PaketAdi" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Fiyat" class="control-label"></label>
+            <input type="number" asp-for="Fiyat" step="0.01" class="form-control" />
+            <span asp-validation-for="Fiyat" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="PaketSuresi" class="control-label"></label>
+            <input type="number" asp-for="PaketSuresi" class="form-control" placeholder="Örnek: 30" />
+            <small class="form-text text-muted">
+                Lütfen paketin geçerli olacağı süreyi gün cinsinden girin (örneğin, 30 gün).
+            </small>
+            <span asp-validation-for="PaketSuresi" class="text-danger"></span>
+        </div>
+        <div class="form-group form-check">
+            <input type="checkbox" asp-for="AktifMi" class="form-check-input" />
+            <label asp-for="AktifMi" class="form-check-label"></label>
+            <span asp-validation-for="AktifMi" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="KapasiteSayisi" class="control-label"></label>
+            <input type="number" asp-for="KapasiteSayisi" class="form-control" />
+            <span asp-validation-for="KapasiteSayisi" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Ekle</button>
+            <a asp-action="Index" class="btn btn-secondary">İptal</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,31 @@
+﻿@using IKSitesiMVC.Areas.SiteAdmin.DTO_s.Bolum
+@model IEnumerable<Bolum_DTO>
+
+<h2>Bölüm Yönetimi</h2>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Bölüm Adı</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var bolum in Model)
+        {
+            <tr>
+                <td>@bolum.BolumID</td>
+                <td>@bolum.BolumAdi</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@bolum.BolumID" class="btn btn-warning">Güncelle</a>
+                    <a asp-action="Delete" asp-route-id="@bolum.BolumID" class="btn btn-danger">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary">Yeni Bölüm Ekle</a>

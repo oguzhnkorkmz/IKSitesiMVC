@@ -1,0 +1,147 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+   
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Nunito', sans-serif;
+    letter-spacing: 0.05em;
+}
+
+/* Common form container */
+.form-container {
+    max-width: 400px;
+    margin: 80px auto;
+    padding: 30px;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Title for forms */
+.form-title {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Form groups */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Button full width */
+button.w-100 {
+    width: 100%;
+}
+
+/* Success and error message styles */
+.alert {
+    margin-top: 20px;
+}
+
+.hero {
+    position: relative;
+    z-index: 1; /* Öne çýkar */
+    background: url('/images/hero-bg.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    color: white;
+    text-align: left;
+    aspect-ratio: 16 / 9;
+    filter: sepia(0.4) contrast(1.2) brightness(0.9);
+    margin-top: 50px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+    .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.4);
+        z-index: 0; /* Arka plana at */
+    }
+    .hero .container {
+        position: relative;
+        z-index: 2; /* Üste çýkar, týklanabilir olur */
+    }
+
+
+section {
+    margin-bottom: 50px;
+}
+
+
+
+
+.hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+}
+
+.hero .content {
+    position: relative;
+    z-index: 1;
+}
+/* Feature blocks */
+.features .feature {
+    text-align: center;
+    padding: 20px;
+}
+
+    .features .feature img {
+        max-width: 80px;
+        margin-bottom: 15px;
+    }
+/* Packages */
+.paket-card {
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform .3s;
+}
+
+    .paket-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0,0,0,.2);
+    }
+/* Testimonials */
+.testimonial {
+    background: #f8f9fa;
+    padding: 40px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+    .testimonial img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 15px;
+    }
